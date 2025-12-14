@@ -5,30 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Udit Kandari</title>
   </head>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Udit Kandari | QA Automation Engineer (SDET)</title>
+    <meta name="description" content="Udit Kandari — QA Automation Engineer (SDET). Playwright + TypeScript. UI/API automation, frameworks, CI/CD." />
+    <meta name="robots" content="index,follow" />
+    <style>
+      :root { --bg:#0b1220; --card:#111a2e; --text:#eaf0ff; --muted:#b6c2e2; --accent:#7aa2ff; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: radial-gradient(1200px 600px at 20% 0%, #1a2b57 0%, var(--bg) 55%);
+        color: var(--text);
+        line-height: 1.5;
+      }
+      .wrap { max-width: 900px; margin: 0 auto; padding: 56px 20px; }
+      .card {
+        background: rgba(17,26,46,.85);
+        border: 1px solid rgba(122,162,255,.18);
+        border-radius: 18px;
+        padding: 28px;
+        box-shadow: 0 12px 30px rgba(0,0,0,.25);
+      }
+      h1 { margin: 0 0 6px; font-size: 40px; letter-spacing: .2px; }
+      .role { margin: 0 0 16px; color: var(--muted); font-size: 16px; }
+      .pillrow { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 22px; }
+      .pill {
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(122,162,255,.12);
+        border: 1px solid rgba(122,162,255,.22);
+        color: var(--text);
+        font-size: 13px;
+      }
+      .links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+      a.btn {
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(122,162,255,.3);
+        background: rgba(255,255,255,.04);
+        color: var(--text);
+      }
+      a.btn:hover { border-color: rgba(122,162,255,.7); transform: translateY(-1px); }
+      .note { margin-top: 18px; color: var(--muted); font-size: 14px; }
+      footer { margin-top: 18px; color: rgba(182,194,226,.85); font-size: 12px; text-align: center; }
+      code { color: #cfe0ff; }
+    </style>
+  </head>
   <body>
-  <main class="card">
-    <h1>Udit Kandari</h1>
-    <p class="role">QA Automation Engineer (SDET)</p>
-    <p class="tagline">Building reliable automation with Playwright + TypeScript.</p>
+    <main class="wrap">
+      <section class="card">
+        <h1>Udit Kandari</h1>
+        <p class="role">QA Automation Engineer (SDET) • Playwright + TypeScript • UI + API Automation</p>
 
-    <ul class="links">
-      <li><a href="https://github.com/uditkandari" target="_blank" rel="noopener">GitHub</a></li>
-      <li><a href="PASTE_LINKEDIN_URL" target="_blank" rel="noopener">LinkedIn</a></li>
-      <li><a href="mailto:PASTE_EMAIL" rel="noopener">Email</a></li>
-    </ul>
-  </main>
+        <div class="pillrow">
+          <span class="pill">Playwright</span>
+          <span class="pill">TypeScript</span>
+          <span class="pill">API Testing</span>
+          <span class="pill">CI/CD</span>
+          <span class="pill">Framework Design</span>
+          <span class="pill">Flaky Test Reduction</span>
+        </div>
 
-  <style>
-    :root { color-scheme: light dark; }
-    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; display:grid; place-items:center; min-height:100vh; padding:24px; }
-    .card { max-width: 680px; width: 100%; padding: 28px; border: 1px solid rgba(127,127,127,.25); border-radius: 16px; }
-    h1 { margin:0 0 8px; font-size: 40px; letter-spacing: .2px; }
-    .role { margin:0 0 10px; font-weight:600; opacity:.9; }
-    .tagline { margin:0 0 18px; opacity:.8; }
-    .links { list-style:none; padding:0; margin:0; display:flex; gap:14px; flex-wrap:wrap; }
-    .links a { text-decoration:none; padding:10px 14px; border:1px solid rgba(127,127,127,.35); border-radius: 999px; display:inline-block; }
-    .links a:hover { transform: translateY(-1px); }
-  </style>
-</body>
+        <p>
+          I build reliable automation frameworks and regression suites that actually help teams ship faster.
+          This site is intentionally minimal right now — next I’ll add projects, blog notes, and a cleaner UI.
+        </p>
+
+        <div class="links">
+          <a class="btn" href="https://github.com/uditkandari" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a class="btn" href="https://www.linkedin.com/in/udit-kandari-7627a445/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <a class="btn" href="mailto:udit.kandari@gmail.com">Email</a>
+        </div>
+      </section>
+
+      <footer>© <span id="y"></span> Udit Kandari</footer>
+    </main>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
+
 
 </html>
