@@ -6,15 +6,29 @@
     <title>Udit Kandari</title>
   </head>
   <body>
-  <h1>Udit Kandari</h1>
-  <p>QA Automation Engineer (SDET)</p>
+  <main class="card">
+    <h1>Udit Kandari</h1>
+    <p class="role">QA Automation Engineer (SDET)</p>
+    <p class="tagline">Building reliable automation with Playwright + TypeScript.</p>
 
-  <ul>
-    <li><a href="https://github.com/uditkandari" target="_blank" rel="noreferrer">GitHub</a></li>
-    <li><a href="https://www.linkedin.com/in/udit-kandari-7627a445/" target="_blank" rel="noreferrer">LinkedIn</a></li>
-    <li><a href="mailto:PASTE_EMAIL_HERE">Email</a></li>
-  </ul>
+    <ul class="links">
+      <li><a href="https://github.com/uditkandari" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="PASTE_LINKEDIN_URL" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="mailto:PASTE_EMAIL" rel="noopener">Email</a></li>
+    </ul>
+  </main>
 
-  <p>Building: uditkandari.com (Next.js + TypeScript + Playwright) — coming next.</p>
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; display:grid; place-items:center; min-height:100vh; padding:24px; }
+    .card { max-width: 680px; width: 100%; padding: 28px; border: 1px solid rgba(127,127,127,.25); border-radius: 16px; }
+    h1 { margin:0 0 8px; font-size: 40px; letter-spacing: .2px; }
+    .role { margin:0 0 10px; font-weight:600; opacity:.9; }
+    .tagline { margin:0 0 18px; opacity:.8; }
+    .links { list-style:none; padding:0; margin:0; display:flex; gap:14px; flex-wrap:wrap; }
+    .links a { text-decoration:none; padding:10px 14px; border:1px solid rgba(127,127,127,.35); border-radius: 999px; display:inline-block; }
+    .links a:hover { transform: translateY(-1px); }
+  </style>
 </body>
+
 </html>
