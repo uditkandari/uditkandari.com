@@ -1,0 +1,19 @@
+{
+  "name": "uditkandari.com",
+  "version": "1.0.0",
+  "description": "Personal site for Udit Kandari with Playwright smoke tests and CI.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "http-server . -c-1 -p 4173",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.43.1",
+    "@types/node": "^20.12.7",
+    "http-server": "^14.1.1",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
+  }
+}
