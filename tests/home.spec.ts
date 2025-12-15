@@ -15,12 +15,12 @@ test.describe('Home page', () => {
   test('has GitHub and LinkedIn links', async ({ page }) => {
     await page.goto('/');
 
-    const github = page.getByRole('link', { name: /^GitHub$/, exact: true }).first();
+    const github = page.getByRole('link', { name: 'GitHub', exact: true }).first();
     const githubHref = await github.getAttribute('href');
     expect(githubHref).toBeTruthy();
     expect(new URL(githubHref || '').hostname).toContain('github.com');
 
-    const linkedin = page.getByRole('link', { name: /^LinkedIn$/, exact: true }).first();
+    const linkedin = page.getByRole('link', { name: 'LinkedIn', exact: true }).first();
     const linkedinHref = await linkedin.getAttribute('href');
     expect(linkedinHref).toBeTruthy();
     expect(new URL(linkedinHref || '').hostname).toContain('linkedin.com');
@@ -30,5 +30,11 @@ test.describe('Home page', () => {
     await page.goto('/');
     await expect(page.getByRole('heading', { name: 'About' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Projects' })).toBeVisible();
+  });
+
+  test('has canonical link for production domain', async ({ page }) => {
+    await page.goto('/');
+    const canonical = page.locator('link[rel="canonical"]');
+    await expect(canonical).toHaveAttribute('href', 'https://uditkandari.com/');
   });
 });

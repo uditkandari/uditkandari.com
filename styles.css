@@ -159,6 +159,17 @@ h1 {
   color: var(--text);
 }
 
+.list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.list li + li {
+  margin-top: 6px;
+}
+
 .pill-list {
   list-style: none;
   padding: 0;
@@ -199,6 +210,16 @@ h1 {
 .card p {
   margin: 0 0 12px;
   color: var(--muted);
+}
+
+.card-points {
+  margin: 0 0 12px;
+  padding-left: 18px;
+  color: var(--text);
+}
+
+.card-points li + li {
+  margin-top: 4px;
 }
 
 .tags {
