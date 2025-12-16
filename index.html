@@ -6,7 +6,7 @@
     <title>Udit Kandari | QA Automation Engineer (SDET)</title>
     <meta
       name="description"
-      content="Udit Kandari — QA Automation Engineer (SDET). I build reliable UI + API automation that keeps CI green and releases fast."
+      content="Udit Kandari — QA Automation Engineer (SDET). I build reliable UI and API automation that keeps releases stable, observable, and fast."
     />
     <link rel="canonical" href="https://uditkandari.com/" />
     <meta property="og:title" content="Udit Kandari | QA Automation Engineer (SDET)" />
@@ -28,13 +28,21 @@
   <body id="top">
     <a class="skip-link" href="#main">Skip to main content</a>
 
+    <div class="parallax-layers" aria-hidden="true">
+      <span class="parallax-item orb orb-a" data-depth="0.08"></span>
+      <span class="parallax-item orb orb-b" data-depth="0.12"></span>
+      <span class="parallax-item orb orb-c" data-depth="0.18"></span>
+      <span class="parallax-item orb orb-d" data-depth="0.22"></span>
+      <span class="parallax-item beam beam-a" data-depth="0.1"></span>
+      <span class="parallax-item beam beam-b" data-depth="0.16"></span>
+    </div>
+
     <header class="site-header" aria-label="Hero">
       <div class="container hero">
         <p class="eyebrow">QA Automation Engineer (SDET) | 8+ years</p>
         <h1>Udit Kandari</h1>
         <p class="tagline">
-          I build reliable UI + API automation (Playwright + TypeScript) that keeps CI green and
-          releases fast.
+          I build reliable UI and API automation that keeps releases stable, observable, and fast.
         </p>
         <div class="actions">
           <a class="button" href="mailto:udit.kandari@gmail.com">Email</a>
@@ -65,8 +73,9 @@
             <h2>About</h2>
           </div>
           <p class="lead">
-            I design and build automation that teams trust—stable UI journeys, API contracts, and
-            CI-ready checks that keep quality high without slowing delivery.
+            I specialize in Playwright + TypeScript and API checks, building automation frameworks
+            that reduce flakiness, surface root causes quickly, and keep CI/CD green. I partner with
+            engineers early to design testable systems and ship faster with confidence.
           </p>
         </div>
       </section>
@@ -97,6 +106,7 @@
             <li>CI/CD</li>
             <li>Test Architecture</li>
             <li>Flaky Test Reduction</li>
+            <li>Performance checks</li>
             <li>Observability</li>
           </ul>
         </div>
@@ -125,7 +135,7 @@
             </article>
             <article class="card" role="listitem">
               <div class="card-header">
-                <h3>API Contract & Integration Checks</h3>
+                <h3>API Contract &amp; Integration Checks</h3>
               </div>
               <ul class="card-points">
                 <li>Catch breaking changes early</li>
@@ -151,6 +161,17 @@
                 <span>Debugging</span>
                 <span>Observability</span>
                 <span>Framework</span>
+              </div>
+            </article>
+            <article class="card" role="listitem">
+              <h3>Release Quality Gate</h3>
+              <p>
+                Implemented deployment blockers tied to tests, coverage, and error budgets so only
+                healthy builds progress.
+              </p>
+              <div class="tags">
+                <span>CI/CD</span>
+                <span>Quality gates</span>
               </div>
             </article>
           </div>
@@ -187,6 +208,10 @@
           <div class="section-header">
             <h2>Contact</h2>
           </div>
+          <p class="lead">
+            Based in Bengaluru (IST). Happy to talk through an automation roadmap or help debug a
+            flaky pipeline.
+          </p>
           <ul class="contact-list">
             <li><a href="mailto:udit.kandari@gmail.com">Email</a></li>
             <li>
@@ -207,13 +232,38 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>© <span id="year"></span> Udit Kandari</p>
+        <p>© <span data-year></span> Udit Kandari</p>
         <a class="footer-link" href="#top">Back to top</a>
       </div>
     </footer>
 
     <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
+      document.querySelector('[data-year]').textContent = new Date().getFullYear();
+
+      const parallaxItems = Array.from(document.querySelectorAll('.parallax-item[data-depth]'));
+      if (parallaxItems.length) {
+        let ticking = false;
+
+        const applyParallax = () => {
+          const scrollY = window.scrollY || window.pageYOffset;
+          parallaxItems.forEach((el) => {
+            const depth = Number(el.dataset.depth || 0);
+            const translateY = scrollY * depth * -1;
+            el.style.setProperty('--ty', `${translateY}px`);
+          });
+          ticking = false;
+        };
+
+        const handleScroll = () => {
+          if (!ticking) {
+            window.requestAnimationFrame(applyParallax);
+            ticking = true;
+          }
+        };
+
+        applyParallax();
+        window.addEventListener('scroll', handleScroll, { passive: true });
+      }
     </script>
   </body>
 </html>
