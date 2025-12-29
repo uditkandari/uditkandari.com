@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flake Hunt Toolkit | Udit Kandari</title>
+    <meta
+      name="description"
+      content="Flake Hunt Toolkit - Detecting and eliminating flaky tests with automated analysis and retry strategies."
+    />
+    <link rel="canonical" href="https://uditkandari.com/projects/flake-hunt-toolkit.html" />
+    <meta property="og:title" content="Flake Hunt Toolkit | Udit Kandari" />
+    <meta
+      property="og:description"
+      content="Automated flake detection and analysis toolkit for improving test reliability."
+    />
+    <meta property="og:url" content="https://uditkandari.com/projects/flake-hunt-toolkit.html" />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Flake Hunt Toolkit | Udit Kandari" />
+    <meta
+      name="twitter:description"
+      content="Automated flake detection and analysis toolkit for improving test reliability."
+    />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../css/project.css" />
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <div class="parallax-layers" aria-hidden="true">
+      <span class="parallax-item orb orb-a" data-depth="0.08"></span>
+      <span class="parallax-item orb orb-b" data-depth="0.12"></span>
+      <span class="parallax-item orb orb-c" data-depth="0.18"></span>
+      <span class="parallax-item orb orb-d" data-depth="0.22"></span>
+      <span class="parallax-item beam beam-a" data-depth="0.1"></span>
+      <span class="parallax-item beam beam-b" data-depth="0.16"></span>
+    </div>
+
+    <header class="project-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <span class="breadcrumb-separator" aria-hidden="true">/</span>
+          <a href="../index.html#projects">Projects</a>
+          <span class="breadcrumb-separator" aria-hidden="true">/</span>
+          <span class="breadcrumb-current" aria-current="page">Flake Hunt Toolkit</span>
+        </nav>
+        <h1>Flake Hunt Toolkit</h1>
+        <p class="project-tagline">Detecting and eliminating flaky tests</p>
+        <div class="project-meta">
+          <div class="meta-item">
+            <span class="meta-label">Tech Stack</span>
+            <span class="meta-value">Playwright, TypeScript, CI Analytics</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Category</span>
+            <span class="meta-value">Test Reliability</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Status</span>
+            <span class="meta-value">Production</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">The Challenge</h2>
+          <div class="challenge-content">
+            <p>
+              Flaky tests were eroding team confidence in the test suite. False failures were
+              causing unnecessary re-runs, blocking deployments, and wasting developer time
+              investigating non-issues.
+            </p>
+            <p>
+              The CI pipeline had become unreliable, with a 30% failure rate attributed to test
+              flakiness rather than actual product bugs. Teams started ignoring test failures,
+              defeating the purpose of automated testing.
+            </p>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-value">92%</div>
+              <div class="stat-label">Flakiness Reduced</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">50+</div>
+              <div class="stat-label">Flaky Tests Fixed</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">99.2%</div>
+              <div class="stat-label">Pipeline Reliability</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">Technical Solution</h2>
+          <p class="section-subtitle">
+            Built a comprehensive toolkit for detecting, analyzing, and eliminating flaky tests with
+            trace-on-failure debugging.
+          </p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-filename">playwright.config.ts</span>
+              <span class="code-lang">TypeScript</span>
+            </div>
+            <div class="code-content">
+              <pre><span class="code-keyword">import</span> { <span class="code-property">defineConfig</span> } <span class="code-keyword">from</span> <span class="code-string">'@playwright/test'</span>;
+
+<span class="code-keyword">export default</span> <span class="code-function">defineConfig</span>({
+  <span class="code-comment">// Retry flaky tests to confirm stability</span>
+  <span class="code-property">retries</span>: process.env.<span class="code-property">CI</span> ? <span class="code-number">2</span> : <span class="code-number">0</span>,
+
+  <span class="code-comment">// Capture trace on first retry for debugging</span>
+  <span class="code-property">use</span>: {
+    <span class="code-property">trace</span>: <span class="code-string">'on-first-retry'</span>,
+    <span class="code-property">screenshot</span>: <span class="code-string">'only-on-failure'</span>,
+    <span class="code-property">video</span>: <span class="code-string">'retain-on-failure'</span>,
+  },
+
+  <span class="code-comment">// Reporter for flake detection</span>
+  <span class="code-property">reporter</span>: [
+    [<span class="code-string">'html'</span>],
+    [<span class="code-string">'json'</span>, { <span class="code-property">outputFile</span>: <span class="code-string">'test-results/results.json'</span> }],
+    [<span class="code-string">'./reporters/flake-detector.ts'</span>]
+  ],
+});</pre>
+            </div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-filename">reporters/flake-detector.ts</span>
+              <span class="code-lang">TypeScript</span>
+            </div>
+            <div class="code-content">
+              <pre><span class="code-keyword">import type</span> { <span class="code-type">Reporter</span>, <span class="code-type">TestCase</span>, <span class="code-type">TestResult</span> } <span class="code-keyword">from</span> <span class="code-string">'@playwright/test/reporter'</span>;
+
+<span class="code-keyword">class</span> <span class="code-type">FlakeDetector</span> <span class="code-keyword">implements</span> <span class="code-type">Reporter</span> {
+  <span class="code-keyword">private</span> flakyTests: <span class="code-type">Map</span>&lt;<span class="code-type">string</span>, <span class="code-type">number</span>&gt; = <span class="code-keyword">new</span> <span class="code-type">Map</span>();
+
+  <span class="code-function">onTestEnd</span>(test: <span class="code-type">TestCase</span>, result: <span class="code-type">TestResult</span>) {
+    <span class="code-comment">// Track tests that passed on retry (flaky)</span>
+    <span class="code-keyword">if</span> (result.<span class="code-property">retry</span> &gt; <span class="code-number">0</span> &amp;&amp; result.<span class="code-property">status</span> === <span class="code-string">'passed'</span>) {
+      <span class="code-keyword">const</span> count = <span class="code-keyword">this</span>.flakyTests.<span class="code-function">get</span>(test.<span class="code-property">title</span>) || <span class="code-number">0</span>;
+      <span class="code-keyword">this</span>.flakyTests.<span class="code-function">set</span>(test.<span class="code-property">title</span>, count + <span class="code-number">1</span>);
+    }
+  }
+
+  <span class="code-function">onEnd</span>() {
+    <span class="code-keyword">if</span> (<span class="code-keyword">this</span>.flakyTests.<span class="code-property">size</span> &gt; <span class="code-number">0</span>) {
+      console.<span class="code-function">log</span>(<span class="code-string">'⚠️ Flaky tests detected:'</span>);
+      <span class="code-keyword">this</span>.flakyTests.<span class="code-function">forEach</span>((count, name) =&gt; {
+        console.<span class="code-function">log</span>(<span class="code-string">`  - ${name} (${count} retries)`</span>);
+      });
+    }
+  }
+}</pre>
+            </div>
+          </div>
+
+          <h3>Key Implementation Details</h3>
+          <ul class="impact-list">
+            <li>Trace-on-failure workflow capturing screenshots, videos, and network logs</li>
+            <li>Custom reporter for tracking retry patterns and identifying chronic flakes</li>
+            <li>Historical flakiness dashboard tracking test reliability over time</li>
+            <li>Automatic quarantine system for tests exceeding flakiness threshold</li>
+            <li>Root cause analysis templates for common flake patterns</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">Tech Stack</h2>
+          <div class="tech-grid">
+            <div class="tech-item">
+              <div class="tech-icon">🎭</div>
+              <div class="tech-name">Playwright</div>
+              <div class="tech-desc">Test Framework</div>
+            </div>
+            <div class="tech-item">
+              <div class="tech-icon">📘</div>
+              <div class="tech-name">TypeScript</div>
+              <div class="tech-desc">Custom Reporters</div>
+            </div>
+            <div class="tech-item">
+              <div class="tech-icon">📊</div>
+              <div class="tech-name">CI Analytics</div>
+              <div class="tech-desc">Trend Analysis</div>
+            </div>
+            <div class="tech-item">
+              <div class="tech-icon">🔍</div>
+              <div class="tech-name">Trace Viewer</div>
+              <div class="tech-desc">Debug Tooling</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">Impact &amp; Results</h2>
+          <ul class="impact-list">
+            <li>
+              <strong>Reduced test flakiness by 92%</strong> through systematic identification and
+              fixes
+            </li>
+            <li><strong>Improved CI pipeline reliability to 99.2%</strong> from a 70% baseline</li>
+            <li>
+              <strong>Saved 10+ hours per week</strong> previously spent on false failure
+              investigations
+            </li>
+            <li>
+              <strong>Restored team confidence</strong> in test results with reliable feedback
+            </li>
+            <li>
+              <strong>Faster debugging</strong> with comprehensive trace artifacts on failures
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-buttons">
+            <a
+              href="https://github.com/uditkandari"
+              target="_blank"
+              rel="noreferrer"
+              class="button-primary"
+            >
+              View on GitHub <span class="arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="../index.html#projects" class="button-secondary">
+              Back to Projects <span class="arrow" aria-hidden="true">←</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <nav class="container project-nav" aria-label="Project navigation">
+        <a href="api-contract-tests.html" class="project-nav-link">
+          <span class="project-nav-label">Previous Project</span>
+          <span class="project-nav-title">← API Contract Tests</span>
+        </a>
+        <div></div>
+      </nav>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>&copy; <span data-year></span> Udit Kandari</p>
+        <a class="footer-link" href="#top">Back to top</a>
+      </div>
+    </footer>
+
+    <script>
+      document.querySelector('[data-year]').textContent = new Date().getFullYear();
+
+      const parallaxItems = Array.from(document.querySelectorAll('.parallax-item[data-depth]'));
+      if (parallaxItems.length) {
+        let ticking = false;
+
+        const applyParallax = () => {
+          const scrollY = window.scrollY || window.pageYOffset;
+          parallaxItems.forEach((el) => {
+            const depth = Number(el.dataset.depth || 0);
+            const translateY = scrollY * depth * -1;
+            el.style.setProperty('--ty', `${translateY}px`);
+          });
+          ticking = false;
+        };
+
+        const handleScroll = () => {
+          if (!ticking) {
+            window.requestAnimationFrame(applyParallax);
+            ticking = true;
+          }
+        };
+
+        applyParallax();
+        window.addEventListener('scroll', handleScroll, { passive: true });
+      }
+    </script>
+  </body>
+</html>
