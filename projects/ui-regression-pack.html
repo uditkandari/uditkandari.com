@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UI Regression Pack | Udit Kandari</title>
+    <meta
+      name="description"
+      content="Automated Visual Regression Testing Suite - A comprehensive Playwright-based UI test suite that catches visual bugs before they reach production."
+    />
+    <link rel="canonical" href="https://uditkandari.com/projects/ui-regression-pack.html" />
+    <meta property="og:title" content="UI Regression Pack | Udit Kandari" />
+    <meta
+      property="og:description"
+      content="Automated Visual Regression Testing Suite built with Playwright and TypeScript for reliable UI testing."
+    />
+    <meta property="og:url" content="https://uditkandari.com/projects/ui-regression-pack.html" />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="UI Regression Pack | Udit Kandari" />
+    <meta
+      name="twitter:description"
+      content="Automated Visual Regression Testing Suite built with Playwright and TypeScript."
+    />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../css/project.css" />
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <div class="parallax-layers" aria-hidden="true">
+      <span class="parallax-item orb orb-a" data-depth="0.08"></span>
+      <span class="parallax-item orb orb-b" data-depth="0.12"></span>
+      <span class="parallax-item orb orb-c" data-depth="0.18"></span>
+      <span class="parallax-item orb orb-d" data-depth="0.22"></span>
+      <span class="parallax-item beam beam-a" data-depth="0.1"></span>
+      <span class="parallax-item beam beam-b" data-depth="0.16"></span>
+    </div>
+
+    <header class="project-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <span class="breadcrumb-separator" aria-hidden="true">/</span>
+          <a href="../index.html#projects">Projects</a>
+          <span class="breadcrumb-separator" aria-hidden="true">/</span>
+          <span class="breadcrumb-current" aria-current="page">UI Regression Pack</span>
+        </nav>
+        <h1>UI Regression Pack</h1>
+        <p class="project-tagline">Automated Visual Regression Testing Suite</p>
+        <div class="project-meta">
+          <div class="meta-item">
+            <span class="meta-label">Tech Stack</span>
+            <span class="meta-value">Playwright, TypeScript, GitHub Actions</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Category</span>
+            <span class="meta-value">Test Automation</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Status</span>
+            <span class="meta-value">Production</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">The Challenge</h2>
+          <div class="challenge-content">
+            <p>
+              Manual UI testing was becoming a bottleneck in the release cycle. Visual bugs were
+              slipping through code reviews and making it to production, causing poor user
+              experience and increased support tickets.
+            </p>
+            <p>
+              The team needed a reliable, automated way to catch visual regressions early in the
+              development process without slowing down deployments.
+            </p>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-value">500+</div>
+              <div class="stat-label">Tests Automated</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">40%</div>
+              <div class="stat-label">Time Saved</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">15+</div>
+              <div class="stat-label">Bugs Caught Pre-Release</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">Technical Solution</h2>
+          <p class="section-subtitle">
+            Built a comprehensive visual regression testing framework using Playwright's screenshot
+            comparison capabilities.
+          </p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-filename">tests/visual-regression.spec.ts</span>
+              <span class="code-lang">TypeScript</span>
+            </div>
+            <div class="code-content">
+              <pre><span class="code-keyword">import</span> { <span class="code-property">test</span>, <span class="code-property">expect</span> } <span class="code-keyword">from</span> <span class="code-string">'@playwright/test'</span>;
+
+<span class="code-function">test</span>(<span class="code-string">'homepage visual regression'</span>, <span class="code-keyword">async</span> ({ <span class="code-property">page</span> }) =&gt; {
+  <span class="code-keyword">await</span> page.<span class="code-function">goto</span>(<span class="code-string">'/'</span>);
+
+  <span class="code-comment">// Wait for all animations to complete</span>
+  <span class="code-keyword">await</span> page.<span class="code-function">waitForLoadState</span>(<span class="code-string">'networkidle'</span>);
+
+  <span class="code-comment">// Full page screenshot comparison</span>
+  <span class="code-keyword">await</span> <span class="code-function">expect</span>(page).<span class="code-function">toHaveScreenshot</span>(<span class="code-string">'homepage.png'</span>, {
+    <span class="code-property">maxDiffPixels</span>: <span class="code-number">100</span>,
+    <span class="code-property">threshold</span>: <span class="code-number">0.2</span>
+  });
+});
+
+<span class="code-function">test</span>(<span class="code-string">'component isolation test'</span>, <span class="code-keyword">async</span> ({ <span class="code-property">page</span> }) =&gt; {
+  <span class="code-keyword">await</span> page.<span class="code-function">goto</span>(<span class="code-string">'/components'</span>);
+
+  <span class="code-keyword">const</span> header = page.<span class="code-function">locator</span>(<span class="code-string">'header'</span>);
+  <span class="code-keyword">await</span> <span class="code-function">expect</span>(header).<span class="code-function">toHaveScreenshot</span>(<span class="code-string">'header.png'</span>);
+});</pre>
+            </div>
+          </div>
+
+          <h3>Key Implementation Details</h3>
+          <ul class="impact-list">
+            <li>Baseline screenshot management with automatic updates on intentional changes</li>
+            <li>Cross-browser testing across Chrome, Firefox, and Safari</li>
+            <li>Responsive testing at mobile, tablet, and desktop breakpoints</li>
+            <li>Integration with GitHub Actions for CI/CD pipeline</li>
+            <li>Slack notifications for failed visual comparisons</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">Tech Stack</h2>
+          <div class="tech-grid">
+            <div class="tech-item">
+              <div class="tech-icon">🎭</div>
+              <div class="tech-name">Playwright</div>
+              <div class="tech-desc">E2E Testing Framework</div>
+            </div>
+            <div class="tech-item">
+              <div class="tech-icon">📘</div>
+              <div class="tech-name">TypeScript</div>
+              <div class="tech-desc">Type-Safe Test Code</div>
+            </div>
+            <div class="tech-item">
+              <div class="tech-icon">⚙️</div>
+              <div class="tech-name">GitHub Actions</div>
+              <div class="tech-desc">CI/CD Pipeline</div>
+            </div>
+            <div class="tech-item">
+              <div class="tech-icon">📸</div>
+              <div class="tech-name">Visual Comparison</div>
+              <div class="tech-desc">Pixel-Perfect Testing</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">Impact &amp; Results</h2>
+          <ul class="impact-list">
+            <li>
+              <strong>Reduced visual bugs in production by 85%</strong> through automated regression
+              detection
+            </li>
+            <li>
+              <strong>Saved 40% of manual QA time</strong> previously spent on visual verification
+            </li>
+            <li>
+              <strong>Enabled confident refactoring</strong> with instant feedback on UI changes
+            </li>
+            <li>
+              <strong>Improved developer experience</strong> with clear visual diff reports on PRs
+            </li>
+            <li>
+              <strong>Faster release cycles</strong> with automated visual validation in CI pipeline
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-buttons">
+            <a
+              href="https://github.com/uditkandari"
+              target="_blank"
+              rel="noreferrer"
+              class="button-primary"
+            >
+              View on GitHub <span class="arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="../index.html#projects" class="button-secondary">
+              Back to Projects <span class="arrow" aria-hidden="true">←</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <nav class="container project-nav" aria-label="Project navigation">
+        <div></div>
+        <a href="api-contract-tests.html" class="project-nav-link next">
+          <span class="project-nav-label">Next Project</span>
+          <span class="project-nav-title">API Contract Tests →</span>
+        </a>
+      </nav>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>&copy; <span data-year></span> Udit Kandari</p>
+        <a class="footer-link" href="#top">Back to top</a>
+      </div>
+    </footer>
+
+    <script>
+      document.querySelector('[data-year]').textContent = new Date().getFullYear();
+
+      const parallaxItems = Array.from(document.querySelectorAll('.parallax-item[data-depth]'));
+      if (parallaxItems.length) {
+        let ticking = false;
+
+        const applyParallax = () => {
+          const scrollY = window.scrollY || window.pageYOffset;
+          parallaxItems.forEach((el) => {
+            const depth = Number(el.dataset.depth || 0);
+            const translateY = scrollY * depth * -1;
+            el.style.setProperty('--ty', `${translateY}px`);
+          });
+          ticking = false;
+        };
+
+        const handleScroll = () => {
+          if (!ticking) {
+            window.requestAnimationFrame(applyParallax);
+            ticking = true;
+          }
+        };
+
+        applyParallax();
+        window.addEventListener('scroll', handleScroll, { passive: true });
+      }
+    </script>
+  </body>
+</html>

@@ -340,6 +340,33 @@ h1 {
   color: var(--text);
 }
 
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition:
+    color 150ms ease,
+    gap 150ms ease;
+}
+
+.project-link:hover {
+  color: var(--accent-strong);
+  gap: 10px;
+}
+
+.project-link .arrow {
+  transition: transform 150ms ease;
+}
+
+.project-link:hover .arrow {
+  transform: translateX(2px);
+}
+
 .contact-list {
   list-style: none;
   padding: 0;
