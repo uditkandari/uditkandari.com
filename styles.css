@@ -19,6 +19,8 @@
 body {
   margin: 0;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
   font-family:
     system-ui,
     -apple-system,
@@ -58,6 +60,107 @@ a:hover {
 
 .skip-link:focus-visible {
   left: 12px;
+}
+
+.parallax-layers {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.parallax-item {
+  position: absolute;
+  display: block;
+  will-change: transform;
+  --tx: 0px;
+  --ty: 0px;
+  --rotate: 0deg;
+  transform: translate3d(var(--tx), var(--ty), 0) rotate(var(--rotate));
+  transition: opacity 240ms ease;
+}
+
+.orb {
+  border-radius: 50%;
+  filter: blur(14px);
+  opacity: 0.85;
+  mix-blend-mode: screen;
+  background: radial-gradient(
+    circle at 32% 32%,
+    rgba(122, 162, 255, 0.5) 0%,
+    rgba(167, 192, 255, 0.35) 28%,
+    rgba(11, 18, 32, 0) 60%
+  );
+}
+
+.orb-a {
+  width: 520px;
+  height: 520px;
+  top: -140px;
+  left: -140px;
+}
+
+.orb-b {
+  width: 420px;
+  height: 420px;
+  top: 260px;
+  right: -100px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(122, 255, 229, 0.35) 0%,
+    rgba(122, 162, 255, 0.35) 32%,
+    rgba(11, 18, 32, 0) 60%
+  );
+}
+
+.orb-c {
+  width: 440px;
+  height: 440px;
+  bottom: -120px;
+  left: 10%;
+}
+
+.orb-d {
+  width: 360px;
+  height: 360px;
+  bottom: 140px;
+  right: 12%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 198, 122, 0.18) 0%,
+    rgba(167, 192, 255, 0.3) 34%,
+    rgba(11, 18, 32, 0) 58%
+  );
+}
+
+.beam {
+  height: 240px;
+  width: 78%;
+  border-radius: 38px;
+  filter: blur(10px);
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  background: linear-gradient(
+    110deg,
+    rgba(122, 162, 255, 0),
+    rgba(122, 162, 255, 0.16),
+    rgba(167, 192, 255, 0.08),
+    rgba(122, 162, 255, 0)
+  );
+}
+
+.beam-a {
+  top: 18%;
+  left: -12%;
+  --rotate: -9deg;
+}
+
+.beam-b {
+  bottom: -4%;
+  right: -18%;
+  height: 260px;
+  --rotate: 7deg;
 }
 
 .container {
@@ -159,6 +262,17 @@ h1 {
   color: var(--text);
 }
 
+.list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.list li + li {
+  margin-top: 6px;
+}
+
 .pill-list {
   list-style: none;
   padding: 0;
@@ -199,6 +313,16 @@ h1 {
 .card p {
   margin: 0 0 12px;
   color: var(--muted);
+}
+
+.card-points {
+  margin: 0 0 12px;
+  padding-left: 18px;
+  color: var(--text);
+}
+
+.card-points li + li {
+  margin-top: 4px;
 }
 
 .tags {
