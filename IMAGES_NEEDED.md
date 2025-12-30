@@ -1,6 +1,7 @@
 # Images Required for Portfolio
 
 ## Current Status
+
 The site is fully functional without images. The design uses a dark theme with CSS-based visual effects (parallax orbs and beams) that work well without images.
 
 ## Optional Enhancements
@@ -28,6 +29,7 @@ The site is fully functional without images. The design uses a dark theme with C
    - Add download button to hero section if desired
 
 ## Directory Structure
+
 ```
 public/
 └── images/
@@ -39,6 +41,7 @@ public/
 ```
 
 ## Notes
+
 - The current design intentionally relies on CSS visual effects rather than images
 - This keeps the site lightweight and fast-loading
 - Social sharing will work better with an og:image meta tag
